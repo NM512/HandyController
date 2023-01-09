@@ -1,0 +1,76 @@
+mediapipe:
+  feature_num: 21
+  # Finger offsets
+  wrist:
+    name: 'Wrist'
+    offset: 0
+
+  thumb:
+    first:
+      name: 'ThumbTip'
+      offset: 4
+    second:
+      name: 'ThumbIp'
+      offset: 3
+    third:
+      name: 'ThumbMcp'
+      offset: 2
+    fourth:
+      name: 'ThumbCmc'
+      offset: 1
+
+  index:
+    first:
+      name: 'IndexTip'
+      offset: 8
+    second:
+      name: 'IndexDip'
+      offset: 7
+    third:
+      name: 'IndexPip'
+      offset: 6
+    fourth:
+      name: 'IndexMcp'
+      offset: 5
+
+  middle:
+    first:
+      name: 'MiddleTip'
+      offset: 12
+    second:
+      name: 'MiddleDip'
+      offset: 11
+    third:
+      name: 'MiddlePip'
+      offset: 10
+    fourth:
+      name: 'MiddleMcp'
+      offset: 9
+
+  ring:
+    first:
+      name: 'RingTip'
+      offset: 16
+    second:
+      name: RingDip
+      offset: 15
+    third:
+      name: RingPip
+      offset: 14
+    fourth:
+      name: RingMcp
+      offset: 13
+
+  pinky:
+    first:
+      name: 'PinkyTip'
+      offset: 20
+    second:
+      name: 'PinkyDip'
+      offset: 19
+    third:
+      name: 'PinkyPip'
+      offset: 18
+    fourth:
+      name: 'PinkyMcp'
+      offset: 17
