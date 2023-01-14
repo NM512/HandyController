@@ -4,8 +4,9 @@ from setuptools import setup, find_packages
 install_requires = [
     'opencv-python',
     'mediapipe',
+    'matplotlib',
+    'gym'
 ]
-
 
 setup(
     name='HandyController',

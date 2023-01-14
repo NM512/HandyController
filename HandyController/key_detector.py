@@ -1,12 +1,11 @@
 from multiprocessing import Process, Array, parent_process
 import time
 import sys
-import keyboard
 from pynput import keyboard
 
 class KeyDetector:
-    def __init__(self, target_keys=('g', 'h', 'j', 'b', 'n', 'm')):
-        self.target_keycode_dict = {keyboard.KeyCode.from_char(key):i for i, key in enumerate(target_keys)}
+    def __init__(self, target_keys):
+        self.target_keycode_dict = {key:i for i, key in enumerate(target_keys)}
         self.flags = Array('b', len(target_keys))
         self.p = Process(target=self._start_process, args=(self.flags,))
         self.p.start()

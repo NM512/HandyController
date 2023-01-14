@@ -2,8 +2,9 @@ from robogym.envs.dactyl.locked import make_env
 from gym import ActionWrapper
 from HandyController.hand_pose_detector import HandPoseDetector
 from HandyController.key_detector import KeyDetector
+from pynput.keyboard import Key
 
-""" Joints name in robotgym dactyl environment
+""" Action space in robotgym dactyl environment
 0:WRZ, 1:WRY,
 2:I1Z, 3:I1Y, 4:I2Y,
 5:M1Z, 6:M1Y, 7:M2Y,
@@ -15,7 +16,7 @@ from HandyController.key_detector import KeyDetector
 class RobogymDactylWrapper(ActionWrapper):
     def __init__(self, env):
         super().__init__(env)
-        self.key_det = KeyDetector()
+        self.key_det = KeyDetector((Key.f1, Key.f2, Key.f3, Key.f4))
         self.hand_det = HandPoseDetector(render_img=True, render_3d=False)
         self.min_max = {'thumb':{'first':[0.0, 1.0], 'second':[0.0, 1.0], 'third':[0.0, 1.0]},
                         'index':{'first':[0.0, 1.0], 'second':[0.0, 1.0], 'third':[0.0, 1.0]},
@@ -32,7 +33,6 @@ class RobogymDactylWrapper(ActionWrapper):
         self.wrist_pose = [5.0, 5.0]
 
     def angles_to_action(self, action, angles):
-        print([angles['thumb']['z']], [angles['index']['z']], [angles['middle']['z']], [angles['ring']['z']], [angles['pinky']['z']])
 
         action[2] = 10 - min(int(angles['index']['z'] * 100.0), 10)
         action[3] = min(int(angles['index']['third'] * 10.0), 10)
@@ -54,18 +54,17 @@ class RobogymDactylWrapper(ActionWrapper):
         return action
 
     def key_to_action(self, action, key_flags):
-        if key_flags[3]:
+        if key_flags[0]:
             self.wrist_pose[0] = min(self.wrist_pose[0] + 0.1, 10.0)
-        if key_flags[5]:
-            self.wrist_pose[0] = max(self.wrist_pose[0] - 0.1, 0.0)
         if key_flags[1]:
+            self.wrist_pose[0] = max(self.wrist_pose[0] - 0.1, 0.0)
+        if key_flags[2]:
             self.wrist_pose[1] = min(self.wrist_pose[1] + 0.1, 10.0)
-        if key_flags[4]:
+        if key_flags[3]:
             self.wrist_pose[1] = max(self.wrist_pose[1] - 0.1, 0.0)
 
         action[0] = int(self.wrist_pose[0])
         action[1] = int(self.wrist_pose[1])
-        print(action[0], action[1])
         return action
 
     def action(self, action):
