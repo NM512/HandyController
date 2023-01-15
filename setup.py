@@ -5,7 +5,10 @@ install_requires = [
     'opencv-python',
     'mediapipe',
     'matplotlib',
-    'gym'
+    'gym[box2d]==0.15.3',
+    'pyyaml',
+    'pynput',
+    'numpy==1.23.3',
 ]
 
 setup(

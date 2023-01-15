@@ -69,6 +69,7 @@ class HandPoseDetector:
                             if id in [4, 8, 12, 16, 20]:
                                 cv2.circle(imgBGR, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
 
+                cv2.namedWindow('img', cv2.WINDOW_NORMAL)
                 cv2.putText(imgBGR, 'FPS:{:.1f}'.format(fps), (18,50), cv2.FONT_HERSHEY_PLAIN, 3, (0,255,0), 3)
                 cv2.imshow("img", imgBGR)
                 cv2.waitKey(1)

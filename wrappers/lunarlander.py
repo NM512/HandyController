@@ -1,4 +1,3 @@
-from robogym.envs.dactyl.locked import make_env
 from gym import ActionWrapper
 import gym
 from HandyController.hand_pose_detector import HandPoseDetector
@@ -13,7 +12,7 @@ import time
 class LunarLanderWrapper(ActionWrapper):
     def __init__(self, env):
         super().__init__(env)
-        self.hand_det = HandPoseDetector(render_img=True, render_3d=False)
+        self.hand_det = HandPoseDetector(render_img=True, render_3d=True)
 
     def angles_to_action(self, action, angles):
         action[0] = min(angles['index']['second'] * 2.0, 2.0) - 1.0
@@ -35,6 +34,6 @@ if __name__ == '__main__':
         action = [0.0] * env.action_space.shape[0]
         obs, reward, done, info = env.step(action)
         env.render('human')
-        time.sleep(0.1)
+        time.sleep(0.05)
         if done:
             observation = env.reset()

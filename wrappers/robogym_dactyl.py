@@ -17,7 +17,7 @@ class RobogymDactylWrapper(ActionWrapper):
     def __init__(self, env):
         super().__init__(env)
         self.key_det = KeyDetector((Key.f1, Key.f2, Key.f3, Key.f4))
-        self.hand_det = HandPoseDetector(render_img=True, render_3d=False)
+        self.hand_det = HandPoseDetector(render_img=True, render_3d=True)
         self.min_max = {'thumb':{'first':[0.0, 1.0], 'second':[0.0, 1.0], 'third':[0.0, 1.0]},
                         'index':{'first':[0.0, 1.0], 'second':[0.0, 1.0], 'third':[0.0, 1.0]},
                         'middle':{'first':[0.0, 1.0], 'second':[0.0, 1.0], 'third':[0.0, 1.0]},
