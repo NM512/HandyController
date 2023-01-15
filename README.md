@@ -1,5 +1,5 @@
 # HandyController
-Manual controller using your **Hand pose** and **Keyboard** input. Hand pose is recognized via web-cam. \
+Manual controller using your **Hand** and **Keyboard**. Hand pose is recognized via web-cam. \
 RL demonstration can be easily obtained by this especially for multi dimensional continuous control environment.
 
 # Demo
